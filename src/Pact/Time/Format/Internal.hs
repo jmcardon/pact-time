@@ -27,6 +27,7 @@ module Pact.Time.Format.Internal
 ) where
 
 import Control.Applicative
+import Control.Monad(join)
 import Control.Monad.State.Strict
 
 import Data.Aeson (FromJSON(..), ToJSON(..), withText, Value(String))
