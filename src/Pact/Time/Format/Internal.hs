@@ -27,7 +27,6 @@ module Pact.Time.Format.Internal
 ) where
 
 import Control.Applicative
-import Control.Monad(join)
 import Control.Monad.State.Strict
 
 import Data.Aeson (FromJSON(..), ToJSON(..), withText, Value(String))
@@ -281,7 +280,7 @@ data WeekDate = WeekDate
     }
 
 toWeekDate :: ModifiedJulianDay -> WeekDate
-toWeekDate = join (toWeekOrdinal . toOrdinalDate)
+toWeekDate d = toWeekOrdinal (toOrdinalDate d) d
 {-# INLINEABLE toWeekDate #-}
 
 fromWeekDate :: WeekDate -> ModifiedJulianDay
